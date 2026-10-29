@@ -7,9 +7,9 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(__dirname));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname, "inbox.html"));
 });
 
 app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Nova VPN running on port ${PORT}`);
+    console.log(`Nova VPN is running on port ${PORT}`);
 });
