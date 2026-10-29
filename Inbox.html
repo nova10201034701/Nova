@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070914">
+
+<title>Nova VPN | فراتر از محدودیت</title>
+
+<meta name="description"
+content="Nova VPN؛ تجربه‌ای متفاوت از اتصال، سرعت و اینترنت آزاد.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+
+<style>
+:root {
+    --bg: #070914;
+    --card: rgba(17, 23, 44, .78);
+    --blue: #00d5ff;
+    --purple: #7957ff;
+    --green: #49ffbd;
+    --text: #f4f7ff;
+    --muted: #9aa6c5;
+    --border: rgba(255,255,255,.09);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.8;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font-family: inherit;
+}
+
+::selection {
+    background: var(--blue);
+    color: #050713;
+}
+
+/* BACKGROUND */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,213,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,213,255,.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.orb {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .22;
+    animation: float 12s ease-in-out infinite alternate;
+}
+
+.orb.one {
+    background: #005dff;
+    top: 8%;
+    right: -150px;
+}
+
+.orb.two {
+    background: #7b20ff;
+    top: 45%;
+    left: -180px;
+    animation-delay: -5s;
+}
+
+.orb.three {
+    background: #00d5ff;
+    bottom: -200px;
+    right: 35%;
+    animation-delay: -8s;
+}
+
+@keyframes float {
+    from { transform: translate(0,0) scale(1); }
+    to { transform: translate(45px,-55px) scale(1.18); }
+}
+
+/* NAVBAR */
+
+.navbar {
+    width: min(1180px, 92%);
+    margin: 20px auto 0;
+    padding: 13px 19px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border: 1px solid var(--border);
+    background: rgba(10,14,29,.78);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    position: sticky;
+    top: 12px;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -.5px;
+}
+
+.logo-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: #03121a;
+    background: linear-gradient(135deg, var(--blue), #6c8bff);
+    box-shadow: 0 0 25px rgba(0,213,255,.24);
+    font-size: 23px;
+}
+
+.logo span {
+    color: var(--blue);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+.nav-cta, .primary-btn {
+    border: none;
+    color: #03111b;
+    font-weight: 900;
+    background: linear-gradient(110deg, var(--blue), #70e8ff);
+    box-shadow: 0 0 30px rgba(0,213,255,.17);
+    transition: .25s;
+}
+
+.nav-cta {
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+.nav-cta:hover, .primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(0,213,255,.3);
+}
+
+/* HERO */
+
+.hero {
+    width: min(1120px, 92%);
+    min-height: 650px;
+    margin: auto;
+    padding: 100px 0 65px;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid rgba(0,213,255,.2);
+    background: rgba(0,213,255,.055);
+    border-radius: 100px;
+    padding: 8px 14px;
+    color: #8eeeff;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--green);
+    animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: .35; }
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5.2vw, 68px);
+    line-height: 1.45;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+.gradient-text {
+    display: inline-block;
+    background: linear-gradient(100deg, var(--blue), #9b89ff, #ff80e5);
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: gradient 5s linear infinite;
+}
+
+@keyframes gradient {
+    to { background-position: 200% center; }
+}
+
+.hero p {
+    margin-top: 23px;
+    color: var(--muted);
+    max-width: 510px;
+    font-size: 15px;
+    line-height: 2.3;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 13px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+.primary-btn, .secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 23px;
+    border-radius: 13px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: rgba(255,255,255,.035);
+    transition: .25s;
+}
+
+.secondary-btn:hover {
+    border-color: var(--blue);
+    background: rgba(0,213,255,.06);
+}
+
+.hero-note {
+    margin-top: 22px;
+    font-size: 11px;
+    color: #7885a6;
+}
+
+/* HERO VISUAL */
+
+.visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 420px;
+    perspective: 1000px;
+}
+
+.ring {
+    position: absolute;
+    border: 1px solid rgba(0,213,255,.15);
+    border-radius: 50%;
+    width: 310px;
+    height: 310px;
+    animation: rotate 18s linear infinite;
+}
+
+.ring::before {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background: var(--blue);
+    border-radius: 50%;
+    top: 32px;
+    left: 42px;
+    box-shadow: 0 0 18px var(--blue);
+}
+
+.ring.r2 {
+    width: 390px;
+    height: 390px;
+    border-color: rgba(121,87,255,.18);
+    animation-direction: reverse;
+    animation-duration: 25s;
+}
+
+.ring.r2::before {
+    background: #a18cff;
+    box-shadow: 0 0 18px #a18cff;
+    left: auto;
+    right: 20px;
+    top: 75%;
+}
+
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
+.device {
+    position: relative;
+    width: min(340px, 90%);
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 28px;
+    background: linear-gradient(145deg, rgba(25,35,65,.92), rgba(8,12,27,.94));
+    backdrop-filter: blur(25px);
+    box-shadow: 0 35px 100px rgba(0,0,0,.45),
+                inset 0 1px rgba(255,255,255,.08);
+    transform: rotateY(-8deg) rotateX(3deg);
+    animation: deviceFloat 5s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes deviceFloat {
+    0%, 100% { transform: translateY(0) rotateY(-8deg) rotateX(3deg); }
+    50% { transform: translateY(-12px) rotateY(-4deg) rotateX(1deg); }
+}
+
+.device-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.device-head strong {
+    font-size: 17px;
+}
+
+.device-head small {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.device-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: var(--blue);
+    background: rgba(0,213,255,.1);
+    border: 1px solid rgba(0,213,255,.2);
+    font-size: 22px;
+}
+
+.connection {
+    text-align: center;
+    padding: 25px 0;
+    border-radius: 20px;
+    background: radial-gradient(circle, rgba(0,213,255,.09), transparent 75%);
+}
+
+.shield {
+    width: 104px;
+    height: 104px;
+    margin: 0 auto 15px;
+    display: grid;
+    place-items: center;
+    font-size: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,213,255,.3);
+    background: rgba(0,213,255,.07);
+    box-shadow: 0 0 45px rgba(0,213,255,.12);
+    animation: shieldGlow 3s infinite alternate;
+}
+
+@keyframes shieldGlow {
+    to { box-shadow: 0 0 65px rgba(0,213,255,.32); }
+}
+
+.connection strong {
+    display: block;
+    font-size: 16px;
+}
+
+.connection p {
+    margin: 5px 0 0;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.device-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.mini-stat {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: rgba(255,255,255,.025);
+}
+
+.mini-stat small {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.mini-stat strong {
+    font-size: 13px;
+    color: var(--green);
+}
+
+/* COMMON */
+
+section {
+    width: min(1120px, 92%);
+    margin: auto;
+}
+
+.section-head {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 45px;
+}
+
+.eyebrow {
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.section-head h2 {
+    font-size: clamp(25px, 4vw, 39px);
+    line-height: 1.7;
+    margin-top: 10px;
+    font-weight: 900;
+}
+
+.section-head p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* FEATURES */
+
+.features {
+    padding: 75px 0 90px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+}
+
+.feature-card {
+    padding: 27px;
+    border: 1px solid var(--border);
+    border-radius: 21px;
+    background: linear-gradient(145deg, rgba(20,28,52,.76), rgba(10,14,29,.8));
+    transition: .3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0,213,255,.35);
+    box-shadow: 0 20px 55px rgba(0,0,0,.2);
+}
+
+.feature-icon {
+    width: 49px;
+    height: 49px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    background: rgba(0,213,255,.08);
+    border: 1px solid rgba(0,213,255,.16);
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    font-size: 12px;
+    line-height: 2.2;
+    color: var(--muted);
+}
+
+/* PROTOCOLS */
+
+.protocols {
+    padding: 45px 0 95px;
+}
+
+.protocol-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.protocol-card {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: var(--card);
+}
+
+.protocol-card::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .16;
+    left: -80px;
+    bottom: -100px;
+    background: var(--blue);
+}
+
+.protocol-card:nth-child(2)::after {
+    background: var(--purple);
+}
+
+.protocol-label {
+    display: inline-block;
+    color: var(--blue);
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: rgba(0,213,255,.08);
+}
+
+.protocol-card h3 {
+    font-size: 24px;
+    margin-top: 18px;
+}
+
+.protocol-card p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 9px;
+    line-height: 2.2;
+}
+
+.protocol-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 23px;
+}
+
+.protocol-tags span {
+    font-size: 10px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    color: #b7c2de;
+}
+
+/* PRICING */
+
+.pricing {
+    padding: 65px 0 100px;
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+    align-items: stretch;
+}
+
+.price-card {
+    position: relative;
+    padding: 27px 22px;
+    border-radius: 22px;
+    border: 1px solid var(--border);
+    background: linear-gradient(145deg, rgba(20,27,50,.88), rgba(10,14,28,.9));
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
+
+.price-card:hover {
+    transform: translateY(-6px);
+}
+
+.price-card.popular {
+    border-color: rgba(0,213,255,.55);
+    box-shadow: 0 0 50px rgba(0,213,255,.08);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -13px;
+    right: 22px;
+    background: linear-gradient(100deg, var(--blue), #8cddff);
+    color: #03111b;
+    padding: 4px 12px;
+    font-size: 10px;
+    font-weight: 900;
+    border-radius: 8px;
+}
+
+.price-card h3 {
+    font-size: 17px;
+}
+
+.price-description {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.price {
+    font-size: 29px;
+    font-weight: 900;
+    margin-top: 25px;
+}
+
+.price small {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.price-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 23px 0;
+}
+
+.price-features {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 25px;
+}
+
+.price-features li {
+    font-size: 12px;
+    color: #c5cee3;
+    margin-bottom: 13px;
+}
+
+.price-features li::before {
+    content: "✓";
+    color: var(--green);
+    margin-left: 9px;
+    font-weight: 900;
+}
+
+.price-card .primary-btn,
+.price-card .secondary-btn {
+    width: 100%;
+}
+
+/* CTA */
+
+.final-cta {
+    margin-bottom: 90px;
+    padding: 55px 25px;
+    text-align: center;
+    border: 1px solid rgba(0,213,255,.2);
+    border-radius: 28px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(0,213,255,.12), transparent 65%),
+        rgba(15,21,40,.72);
+}
+
+.final-cta h2 {
+    font-size: clamp(24px, 4vw, 37px);
+    font-weight: 900;
+}
+
+.final-cta p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 14px auto 25px;
+    max-width: 570px;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 27px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+footer .logo {
+    font-size: 17px;
+}
+
+footer .logo-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+/* ANIMATIONS */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 75px;
+        gap: 30px;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .visual {
+        min-height: 430px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+}
+
+@media (max-width: 570px) {
+    .navbar {
+        width: 94%;
+        padding: 10px 12px;
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 17px;
+        gap: 7px;
+    }
+
+    .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 19px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-cta {
+        padding: 9px 12px;
+        font-size: 11px;
+    }
+
+    .hero {
+        padding-top: 65px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .visual {
+        min-height: 365px;
+    }
+
+    .ring {
+        width: 245px;
+        height: 245px;
+    }
+
+    .ring.r2 {
+        width: 310px;
+        height: 310px;
+    }
+
+    .device {
+        padding: 19px;
+        width: min(310px, 92%);
+    }
+
+    .feature-grid, .protocol-grid, .price-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card, .protocol-card {
+        padding: 23px;
+    }
+
+    .section-head {
+        margin-bottom: 30px;
+    }
+
+    .features {
+        padding-top: 50px;
+    }
+
+    .pricing {
+        padding-top: 35px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background" aria-hidden="true">
+    <div class="grid"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+</div>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <a class="logo" href="#home" aria-label="Nova VPN صفحه اصلی">
+        <div class="logo-icon">✦</div>
+        <div>Nova <span>VPN</span></div>
+    </a>
+
+    <nav class="nav-links">
+        <a href="#features">امکانات</a>
+        <a href="#protocols">سرویس‌ها</a>
+        <a href="#pricing">پلن‌ها</a>
+    </nav>
+
+    <a class="nav-cta"
+       href="https://t.me/nova101200210bot"
+       target="_blank"
+       rel="noopener noreferrer">
+       خرید سرویس ↗
+    </a>
+
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            <span class="live-dot"></span>
+            نسل جدید اتصال با Nova VPN
+        </div>
+
+        <h1>
+            اینترنتت،
+            <br>
+            <span class="gradient-text">بدون مرز.</span>
+            <br>
+            فراتر از همیشه.
+        </h1>
+
+        <p>
+            تجربه‌ای متفاوت از اتصال با Nova VPN.
+            برای بازی، وب‌گردی و استفاده روزمره،
+            سرویس مناسب خودت را انتخاب کن.
+            ساده، سریع و متناسب با نیاز تو.
+        </p>
+
+        <div class="hero-actions">
+
+            <a class="primary-btn"
+               href="https://t.me/nova101200210bot"
+               target="_blank"
+               rel="noopener noreferrer">
+                ✦ مشاهده سرویس‌ها
+            </a>
+
+            <a class="secondary-btn" href="#features">
+                کشف امکانات ←
+            </a>
+
+        </div>
+
+        <div class="hero-note">
+            ✧ قبل از خرید، درباره تست سرویس از پشتیبانی سؤال کن.
+        </div>
+
+    </div>
+
+    <!-- ANIMATED VISUAL -->
+
+    <div class="visual" aria-label="تصویر گرافیکی Nova VPN">
+
+        <div class="ring"></div>
+        <div class="ring r2"></div>
+
+        <div class="device">
+
+            <div class="device-head">
+
+                <div>
+                    <strong>Nova VPN</strong>
+                    <small>YOUR CONNECTION EXPERIENCE</small>
+                </div>
+
+                <div class="device-icon">✦</div>
+
+            </div>
+
+            <div class="connection">
+
+                <div class="shield">◈</div>
+
+                <strong>اتصال هوشمند</strong>
+
+                <p>
+                    سرویس متناسب با نیازت را انتخاب کن
+                </p>
+
+            </div>
+
+            <div class="device-bottom">
+
+                <div class="mini-stat">
+                    <small>پروتکل</small>
+                    <strong>WireGuard</strong>
+                </div>
+
+                <div class="mini-stat">
+                    <small>سرویس دوم</small>
+                    <strong>V2Ray</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features" id="features">
+
+    <div class="section-head reveal">
+
+        <div class="eyebrow">WHY NOVA?</div>
+
+        <h2>
+            تجربه‌ای متفاوت از
+            <span class="gradient-text">اتصال</span>
+        </h2>
+
+        <p>
+            امکاناتی برای اینکه سرویس مناسب خودت را
+            راحت‌تر پیدا کنی.
+        </p>
+
+    </div>
+
+    <div class="feature-grid">
+
+        <article class="feature-card reveal">
+
+            <div class="feature-icon">🎮</div>
+
+            <h3>مناسب بازی</h3>
+
+            <p>
+                سرویس مناسب بازی آنلاین را انتخاب کن.
+                پینگ نهایی به اینترنت، مسیر شبکه و سرور بازی بستگی دارد.
+            </p>
+
+        </article>
+
+        <article class="feature-card reveal">
+
+            <div class="feature-icon">⚡</div>
+
+            <h3>انتخاب آسان</h3>
+
+            <p>
+                با توجه به نوع استفاده و حجم موردنیازت،
+                سرویس مناسب را انتخاب کن.
+            </p>
+
+        </article>
+
+        <article class="feature-card reveal">
+
+            <div class="feature-icon">🔐</div>
+
+            <h3>اتصال رمزگذاری‌شده</h3>
+
+            <p>
+                با پیکربندی صحیح، ارتباط بین دستگاه و
+                سرور می‌تواند رمزگذاری شود.
+            </p>
+
+        </article>
+
+        <article class="feature-card reveal">
+
+            <div class="feature-icon">📱</div>
+
+            <h3>مناسب دستگاه‌های مختلف</h3>
+
+            <p>
+                بر اساس پروتکل سرویس، سیستم‌عامل و
+                برنامه سازگار را انتخاب کن.
+            </p>
+
+        </article>
+
+        <article class="feature-card reveal">
+
+            <div class="feature-icon">💎</div>
+
+            <h3>پلن متناسب با نیازت</h3>
+
+            <p>
+                حجم و مدت اشتراک را متناسب با
+                میزان مصرفت انتخاب کن.
+            </p>
+
+        </article>
+
+        <article class="feature-card reveal">
+
+            <div class="feature-icon">💬</div>
+
+            <h3>ارتباط با پشتیبانی</h3>
+
+            <p>
+                برای انتخاب سرویس و اطلاع از شرایط
+                خرید، با پشتیبانی در ارتباط باش.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- PROTOCOLS -->
+
+<section class="protocols" id="protocols">
+
+    <div class="section-head reveal">
+
+        <div class="eyebrow">CHOOSE YOUR EXPERIENCE</div>
+
+        <h2>
+            دو مسیر،
+            <span class="gradient-text">یک انتخاب هوشمند</span>
+        </h2>
+
+        <p>
+            سرویس خودت را با توجه به کاربرد موردنظرت انتخاب کن.
+        </p>
+
+    </div>
+
+    <div class="protocol-grid">
+
+        <article class="protocol-card reveal">
+
+            <span class="protocol-label">GAMING</span>
+
+            <h3>WireGuard</h3>
+
+            <p>
+                گزینه‌ای برای کاربرانی که به دنبال
+                یک ارتباط VPN سبک و مناسب بازی هستند.
+                عملکرد واقعی به شرایط شبکه بستگی دارد.
+            </p>
+
+            <div class="protocol-tags">
+                <span>🎮 بازی آنلاین</span>
+                <span>⚡ پروتکل سبک</span>
+                <span>🌐 ارتباط شبکه</span>
+            </div>
+
+        </article>
+
+        <article class="protocol-card reveal">
+
+            <span class="protocol-label">WEB BROWSING</span>
+
+            <h3>V2Ray</h3>
+
+            <p>
+                گزینه‌ای برای وب‌گردی و استفاده از
+                برنامه‌های سازگار با تنظیمات سرویس.
+                سازگاری را پیش از خرید بررسی کن.
+            </p>
+
+            <div class="protocol-tags">
+                <span>🌍 وب‌گردی</span>
+                <span>📱 چند پلتفرم</span>
+                <span>🔗 تنظیمات اختصاصی</span>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- PRICING -->
+
+<section class="pricing" id="pricing">
+
+    <div class="section-head reveal">
+
+        <div class="eyebrow">SIMPLE & FLEXIBLE</div>
+
+        <h2>
+            پلن مناسب
+            <span class="gradient-text">خودت را پیدا کن</span>
+        </h2>
+
+        <p>
+            جزئیات قیمت و موجودی را از ربات فروش بپرس.
+        </p>
+
+    </div>
+
+    <div class="price-grid">
+
+        <article class="price-card reveal">
+
+            <h3>V2Ray Web</h3>
+
+            <p class="price-description">
+                مناسب وب‌گردی و استفاده روزمره
+            </p>
+
+            <div class="price">
+                انتخاب حجم
+                <small>متناسب با نیاز</small>
+            </div>
+
+            <div class="price-divider"></div>
+
+            <ul class="price-features">
+                <li>انتخاب حجم متناسب با مصرف</li>
+                <li>اطلاع از مدت اعتبار</li>
+                <li>بررسی سازگاری برنامه</li>
+                <li>اطلاع از قیمت روز</li>
+            </ul>
+
+            <a class="secondary-btn"
+               href="https://t.me/nova101200210bot"
+               target="_blank"
+               rel="noopener noreferrer">
+                مشاهده قیمت‌ها ↗
+            </a>
+
+        </article>
+
+        <article class="price-card popular reveal">
+
+            <span class="popular-badge">
+                انتخاب گیمرها
+            </span>
+
+            <h3>WireGuard Gaming</h3>
+
+            <p class="price-description">
+                برای تجربه بازی آنلاین
+            </p>
+
+            <div class="price">
+                پلن گیمینگ
+                <small>با توجه به موجودی</small>
+            </div>
+
+            <div class="price-divider"></div>
+
+            <ul class="price-features">
+                <li>بررسی پلن‌های گیمینگ</li>
+                <li>انتخاب حجم و مدت اشتراک</li>
+                <li>بررسی سازگاری دستگاه</li>
+                <li>اطلاع از قیمت روز</li>
+            </ul>
+
+            <a class="primary-btn"
+               href="https://t.me/nova101200210bot"
+               target="_blank"
+               rel="noopener noreferrer">
+                انتخاب سرویس ✦
+            </a>
+
+        </article>
+
+        <article class="price-card reveal">
+
+            <h3>سرویس اختصاصی</h3>
+
+            <p class="price-description">
+                برای بررسی نیازهای خاص
+            </p>
+
+            <div class="price">
+                استعلام قیمت
+                <small>از پشتیبانی</small>
+            </div>
+
+            <div class="price-divider"></div>
+
+            <ul class="price-features">
+                <li>بررسی نیاز کاربر</li>
+                <li>اطلاع از گزینه‌های موجود</li>
+                <li>بررسی شرایط استفاده</li>
+                <li>راهنمای انتخاب سرویس</li>
+            </ul>
+
+            <a class="secondary-btn"
+               href="https://t.me/nova101200210bot"
+               target="_blank"
+               rel="noopener noreferrer">
+                ارتباط با فروش ↗
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- FINAL CTA -->
+
+<section class="final-cta reveal">
+
+    <div class="eyebrow">YOUR NEXT CONNECTION</div>
+
+    <h2>
+        آماده‌ای <span class="gradient-text">Nova</span> را تجربه کنی؟
+    </h2>
+
+    <p>
+        برای مشاهده پلن‌های موجود، اطلاع از قیمت‌ها
+        و دریافت راهنمای خرید وارد ربات فروش شو.
+    </p>
+
+    <a class="primary-btn"
+       href="https://t.me/nova101200210bot"
+       target="_blank"
+       rel="noopener noreferrer">
+        ورود به ربات Nova VPN ↗
+    </a>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <a class="logo" href="#home">
+        <div class="logo-icon">✦</div>
+        <div>Nova <span>VPN</span></div>
+    </a>
+
+    <div>
+        © 2026 Nova VPN — تمامی حقوق محفوظ است.
+    </div>
+
+    <a href="https://t.me/nova101200210bot"
+       target="_blank"
+       rel="noopener noreferrer">
+       پشتیبانی و خرید ↗
+    </a>
+
+</footer>
+
+<script>
+/* SCROLL REVEAL */
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+
+    });
+
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach((element) => {
+    observer.observe(element);
+});
+
+/* SUBTLE MOUSE EFFECT */
+
+const visual = document.querySelector(".visual");
+const device = document.querySelector(".device");
+
+if (
+    visual &&
+    device &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+
+    visual.addEventListener("mousemove", (event) => {
+
+        const rect = visual.getBoundingClientRect();
+
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+        device.style.transform =
+            `rotateY(${-8 + x * 10}deg) rotateX(${3 - y * 7}deg)`;
+
+    });
+
+    visual.addEventListener("mouseleave", () => {
+        device.style.transform = "";
+    });
+
+}
+</script>
+
+</body>
+</html>
